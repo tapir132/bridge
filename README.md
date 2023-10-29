@@ -1,20 +1,9 @@
-<h1 align="center">Miscellaneous Guild Bridge</h1>
+<h1 align="center">Fair Game Guild Bridge</h1>
 
 <p align="center">
-    A bot used to Bridge between Discord and Hypixel guild chats.
+    A bot used to Bridge between Discord and Hypixel guild chats. Forked from MiscGuild with new features added for Fair Game.
 </p>
 
-<h3 align="center">
-    <a href="https://github.com/MiscGuild/bridge/stargazers">
-        <img alt="Stars" src="https://img.shields.io/github/stars/MiscGuild/bridge?color=blue"/>
-    </a>
-    <a href="https://github.com/MiscGuild/bridge/forks">
-        <img alt="Forks" src="https://img.shields.io/github/forks/MiscGuild/bridge">
-    </a>
-    <a href="https://discord.gg/dEsfnJkQcq">
-        <img alt="Guild Discord" src="https://img.shields.io/discord/522586672148381726?label=discord&color=blue&logo=discord&logoColor=blue"/>
-    </a>
-</h3>
 
 > **Warning**
 > This application will log into Minecraft using Mineflayer, a Minecraft bot client. This may be against the rules of some servers and could result in punishment. All contributors to this repository are not liable for damages, and no warranty is provided under the [MIT License](https://github.com/MiscGuild/bridge/blob/master/LICENSE).
@@ -41,6 +30,8 @@
 -   Toggleable use of Discord emojis for Hypixel ranks in chat messages.
 -   Privileged slash commands to control bot behaviour in-game.
 -   Toggleable slowmode to slow and control member usage.
+-   Automatic rank promotes and demotes (coming soon)
+-   Message logging so people can always private message you even if you are offline
 
 ## Installation
 
@@ -56,7 +47,7 @@
 2. Clone the repository into a directory of your choice.
 
 ```bash
-$ git clone https://github.com/MiscGuild/bridge.git
+$ git clone https://github.com/tapir132/bridge.git
 ```
 
 3. Enter the new directory and install packages.
@@ -89,7 +80,7 @@ $ npm run build
 $ npm start
 ```
 
-### Rank Emojis
+### Rank Emojis (NOT RECOMMENDED)
 
 Optionally, you may activate the use of rank emojis in discord messages by following these steps:
 

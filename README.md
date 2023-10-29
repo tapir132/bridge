@@ -50,7 +50,7 @@
 $ git clone https://github.com/tapir132/bridge.git
 ```
 
-3. Enter the new directory and install packages.
+3. Enter the new directory and install packages. Update any packages if needed.
 
 ```bash
 $ cd bridge

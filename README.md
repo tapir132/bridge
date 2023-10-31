@@ -30,8 +30,8 @@
 -   Toggleable use of Discord emojis for Hypixel ranks in chat messages.
 -   Privileged slash commands to control bot behaviour in-game.
 -   Toggleable slowmode to slow and control member usage.
--   Automatic rank promotes and demotes (coming soon)
--   Message logging so people can always private message you even if you are offline
+-   Automatic rank promotes and demotes.
+-   Message logging so people can always private message you even if you are offline.
 
 ## Installation
 

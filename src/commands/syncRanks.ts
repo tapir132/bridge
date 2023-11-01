@@ -19,7 +19,10 @@ export default {
   ],  
   },
   run: async (bot, interaction: CommandInteraction, args) => {
+    
     const doDemotions = args[0];
+    console.log(`doDemotions value: ${doDemotions}`);
+
     const lowestRankRequirement: number = Number(process.env.LOWEST_RANK_REQUIREMENT!);
     //lowestRankRequirement currently causes a compile error as it is not being used yet, but it does not affect code functionality
     const middleRankRequirement: number = Number(process.env.MIDDLE_RANK_REQUIREMENT!);
@@ -51,48 +54,55 @@ export default {
           const namesData = await namesResponse.json();
           const names = namesData.name;
           const guildRank = member.rank;
-          console.log(`Checked ${names} : ${total}`);
 
 
           // Find the rank requirement for the current member's rank
-          if (guildRank === lowestRankName && total >= middleRankRequirement) {
-            if (guildRank === lowestRankName && total >= highestRankRequirement) {
-              console.log(`${names} should be promoted to ${highestRankName}!`);
-              await bot.executeTask(`/g setrank ${names} ${highestRankName}`);
-              actionSummary.push(`${names} promoted to ${highestRankName}`);
-            }else{
+          if (guildRank === lowestRankName) {
+            if (total >= highestRankRequirement){
+            console.log(`${names} should be promoted to ${highestRankName}!`);
+            await bot.executeTask(`/g setrank ${names} ${highestRankName}`);
+            actionSummary.push(`${names} promoted to ${highestRankName}`);
+            } else if(total >= middleRankRequirement){
             console.log(`${names} should be promoted to ${middleRankName}!`);
             await bot.executeTask(`/g setrank ${names} ${middleRankName}`);
             actionSummary.push(`${names} promoted to ${middleRankName}`);
             }
           }
-          if (guildRank === middleRankName && total >= highestRankRequirement) {
+
+          if (guildRank === middleRankName) {
+            if (total >= highestRankRequirement){
             console.log(`${names} should be promoted to ${highestRankName}!`);
             await bot.executeTask(`/g setrank ${names} ${highestRankName}`);
             actionSummary.push(`${names} promoted to ${highestRankName}`);
-          }
-          if (guildRank === middleRankName && total <= middleRankRequirement && doDemotions === true) {
-            console.log(`${names} should be demoted to ${lowestRankName}!`);
-            await bot.executeTask(`/g setrank ${names} ${lowestRankName}`);
-            actionSummary.push(`${names} demoted to ${lowestRankName}`);
-          }
-          if (guildRank === highestRankName && total <= highestRankRequirement && doDemotions === true) {
-            if (guildRank === highestRankName && total <= middleRankRequirement && doDemotions === true) {
-              console.log(`${names} should be demoted to ${lowestRankName}!`);
-              actionSummary.push(`${names} demoted to ${lowestRankName}`);
-            }else{
-            console.log(`${names} should be demoted to ${middleRankName}!`);
-            actionSummary.push(`${names} demoted to ${middleRankName}`);
             }
           }
           if(total < lowestRankRequirement){
             console.log(`${names} is inactive!`);
           }
-        } else {
+          if(doDemotions == true){
+            if(guildRank === middleRankName && total < middleRankRequirement){
+            console.log(`${names} should be demoted to ${lowestRankName}!`);
+            await bot.executeTask(`/g setrank ${names} ${lowestRankName}`);
+            actionSummary.push(`${names} demoted to ${lowestRankName}`);
+            } else if(guildRank === highestRankName && total <  highestRankRequirement){
+              if(total >= middleRankRequirement){
+              console.log(`${names} should be demoted to ${middleRankName}!`);
+              await bot.executeTask(`/g setrank ${names} ${middleRankName}`);
+              actionSummary.push(`${names} demoted to ${middleRankName}`);
+              } else if(total < middleRankRequirement){
+                console.log(`${names} should be demoted to ${lowestRankName}!`);
+                await bot.executeTask(`/g setrank ${names} ${lowestRankName}`);
+                actionSummary.push(`${names} demoted to ${lowestRankName}`);
+              }
+            }
+          }
+         
+        }
+         else {
           console.error(`Error fetching names for UUID: ${uuid}`);
         }
-        
       }
+      
 
       // Your response message after processing all members
       const embed = new EmbedBuilder()

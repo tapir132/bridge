@@ -12,7 +12,16 @@ export default {
 	runOnce: false,
 	run: async (bot, hypixelRank: HypixelRank | undefined, playerName: string, type: "joined" | "left") => {
 		const [rank, color] = await getRankData(hypixelRank);
-
+		const guildName = process.env.GUILD_NAME;
+		const welcomeList: string[] = [
+			process.env.WELCOME_1,
+			process.env.WELCOME_2,
+			process.env.WELCOME_3,
+		  ];
+		  function chooseRandomString(strings: string[]): string {
+			const randomIndex = Math.floor(Math.random() * strings.length);
+			return strings[randomIndex] || "No strings available";
+		  }
 		if (type === "joined") {
 			const mojangProfile = await fetchMojangProfile(playerName);
 
@@ -22,7 +31,8 @@ export default {
 				);
 			}
 		}
-
+		const randomWelcome = chooseRandomString(welcomeList);
+		await bot.executeCommand(`/gc ${randomWelcome}`);
 		await bot.sendToDiscord(
 			"gc",
 			`${type === "joined" ? Emojis.positiveGuildEvent : Emojis.negativeGuildEvent} **${

@@ -11,9 +11,8 @@ export interface HypixelPlayerResponse {
 	firstLogin?: number;
 	friendRequests?: null[] | null;
 	karma?: number;
-	knownAliases?: string[] | null;
-	knownAliasesLower?: string[] | null;
 	lastLogin?: number;
+	lastLogout?: number;
 	mainlobbytutorial?: boolean;
 	mostRecentMinecraftVersion?: number;
 	mostRecentlyThanked?: string;

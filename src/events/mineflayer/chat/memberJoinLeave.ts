@@ -24,6 +24,8 @@ export default {
 		  }
 		if (type === "joined") {
 			const mojangProfile = await fetchMojangProfile(playerName);
+			const randomWelcome = chooseRandomString(welcomeList);
+			await bot.executeCommand(`/gc ${randomWelcome}`);
 
 			if (!isFetchError(mojangProfile) && isUserBlacklisted(mojangProfile.id)) {
 				bot.executeCommand(
@@ -31,8 +33,6 @@ export default {
 				);
 			}
 		}
-		const randomWelcome = chooseRandomString(welcomeList);
-		await bot.executeCommand(`/gc ${randomWelcome}`);
 		await bot.sendToDiscord(
 			"gc",
 			`${type === "joined" ? Emojis.positiveGuildEvent : Emojis.negativeGuildEvent} **${

@@ -62,7 +62,7 @@ export default {
                     const thirtyDaysAgo = currentTime - 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
                     if (playerProfile.lastLogout! <= thirtyDaysAgo) {
                       if (doAutoKick == true && guildRank == lowestRankName) {
-                        bot.executeCommand(`/g kick ${names}`);
+                        //bot.executeCommand(`/g kick ${names}`);
                         const lastLogoutInDays = ((currentTime - playerProfile.lastLogout!) / (1000 * 60 * 60 * 24)).toFixed(1);
                         actionSummary.push(`${names} was kicked! Last logout was ${lastLogoutInDays} days ago.`);
                       } else if (guildRank == lowestRankName) {

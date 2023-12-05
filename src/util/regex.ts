@@ -27,7 +27,7 @@ export default {
 	 * Returns:
 	 *  - New Guild Level
 	 */
-	"chat:guildLevelUp": /^\s{19}The Guild has reached Level (\d*)!$/,
+	"chat:guildLevelUp": /^\s{17}The Guild has reached Level (\d*)!$/,
 
 	/**
 	 * When a member is muted/unmuted
@@ -139,4 +139,17 @@ export default {
 	 *  - Message
 	 */
 	"chat:whisper": /^From (?:\[.*])?\s*(\w{2,17}).*?: (.+)$/,
+	/**
+   * Extracts online members based on categories (if they exist)
+   *
+   * Returns:
+   *  - Guild Master (if exists)
+   *  - Admin (if exists)
+   *  - Staff (if exists)
+   *  - Fair (if exists)
+   *  - Elite (if exists)
+   *  - Member (if exists)
+   */
+	"chat:onlineMembers": /Guild Name: (.+?)\n([\s\S]+?)Offline Members: (\d+)/,
+
 };

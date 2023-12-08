@@ -1,7 +1,6 @@
 import { Event } from "../../../interfaces/Event";
 import fetchHypixelGuild from "../../../util/requests/fetchHypixelGuild";
 import fetchMojangProfile from "../../../util/requests/fetchMojangProfile";
-import fetchHypixelPlayerProfile from "../../../util/requests/fetchHypixelPlayerProfile";
 import isFetchError from "../../../util/requests/isFetchError";
 import { TextChannel } from "discord.js";
 
@@ -14,7 +13,7 @@ export default {
 		const lowerMessage = message.toLowerCase();
 
 		if (lowerMessage.startsWith("staff")){
-            ((await bot.discord.channels.fetch(process.env.DM_LOG_CHANNEL_ID)) as TextChannel).send(`Message from ${playerName}: ${message}`);
+            ((await bot.discord.channels.fetch(process.env.DM_LOG_CHANNEL_ID!)) as TextChannel).send(`Message from ${playerName}: ${message}`);
             bot.executeCommand(`/w ${playerName} Your message has been forwarded to staff. We will take a look at it as soon as possible.`);
             return;
         }

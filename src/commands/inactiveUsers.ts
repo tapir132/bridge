@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import { Command } from '../interfaces/Command';
 import isFetchError from '../util/requests/isFetchError';
 import fetchHypixelGuild from '../util/requests/fetchHypixelGuild';
-import { ApplicationCommandOptionType, EmbedBuilder, ButtonBuilder, ButtonComponent, ButtonStyle, ActionRowBuilder } from "discord.js";
+import { ApplicationCommandOptionType, EmbedBuilder} from "discord.js";
 import fetchHypixelPlayerProfile from '../util/requests/fetchHypixelPlayerProfile';
 import fetchHypixelPlayerProfileUUID from '../util/requests/fetchHypixelPlayerProfileUUID';
 import * as fs from 'fs';
@@ -39,7 +39,6 @@ export default {
           if (total == 0) {
             const playerProfile = await fetchHypixelPlayerProfile(`${names}`);
             if (playerProfile == null && guildRank == lowestRankName) {
-              console.log(`Attempting to bypass namechange error for ${names}...`);
               const playerProfile = await fetchHypixelPlayerProfileUUID(`${uuid}`);
               if (!isFetchError(playerProfile)) {
                 if (playerProfile.lastLogout == undefined && guildRank == lowestRankName) {

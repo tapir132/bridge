@@ -27,7 +27,7 @@ export default {
 	 * Returns:
 	 *  - New Guild Level
 	 */
-	"chat:guildLevelUp": /^\s{20}The Guild has reached Level (\d*)!$/,
+	"chat:guildLevelUp": /^\s{17}The Guild has reached Level (\d*)!$/,
 
 	/**
 	 * When a member is muted/unmuted

@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import { Command } from '../interfaces/Command';
 import isFetchError from '../util/requests/isFetchError';
 import fetchHypixelGuild from '../util/requests/fetchHypixelGuild';
-import { ApplicationCommandOptionType, EmbedBuilder} from "discord.js";
+import {EmbedBuilder} from "discord.js";
 import fetchHypixelPlayerProfile from '../util/requests/fetchHypixelPlayerProfile';
 import fetchHypixelPlayerProfileUUID from '../util/requests/fetchHypixelPlayerProfileUUID';
 import * as fs from 'fs';
@@ -100,6 +100,7 @@ export default {
     } catch (error) {
       console.error('An error occurred:', error);
       await interaction.followUp('An error occurred while processing the command.');
+      bot.executeCommand("/oc An error occured when trying to check inactive users.")
     }
   },
   staffOnly: true,

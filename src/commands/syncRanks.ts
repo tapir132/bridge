@@ -23,7 +23,7 @@ export default {
 
     const doDemotions = args[0];
 
-    const lowestRankRequirement: number = Number(process.env.LOWEST_RANK_REQUIREMENT!);
+
     const middleRankRequirement: number = Number(process.env.MIDDLE_RANK_REQUIREMENT!);
     const highestRankRequirement: number = Number(process.env.HIGHEST_RANK_REQUIREMENT!);
 

@@ -12,12 +12,11 @@ export default {
 	runOnce: false,
 	run: async (bot, hypixelRank: HypixelRank | undefined, playerName: string, type: "joined" | "left") => {
 		const [rank, color] = await getRankData(hypixelRank);
-		const guildName = process.env.GUILD_NAME;
 		const welcomeList: string[] = [
-			process.env.WELCOME_1,
-			process.env.WELCOME_2,
-			process.env.WELCOME_3,
-		  ];
+			process.env.WELCOME_1 ?? "Welcome to the guild!",
+			process.env.WELCOME_2 ?? "Welcome!",
+			process.env.WELCOME_3 ?? "Welcome!",
+		];
 		  function chooseRandomString(strings: string[]): string {
 			const randomIndex = Math.floor(Math.random() * strings.length);
 			return strings[randomIndex] || "No strings available";

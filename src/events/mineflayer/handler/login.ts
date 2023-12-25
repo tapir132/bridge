@@ -1,7 +1,8 @@
 import Emojis from "../../../util/emojis/chatEmojis";
 import { TextChannel } from "discord.js";
 import { Event } from "../../../interfaces/Event";
-
+const doAnnouncement = process.env.DO_ANNOUNCEMENT ?? false;
+const announcement = process.env.ANNOUNCEMENT ?? "Announcement is not set in config";
 export default {
 	name: "login",
 	runOnce: true,
@@ -14,11 +15,14 @@ export default {
 		}, 60_000 * 5);
 
 		setInterval(() => {
-			bot.sendGuildMessage(
-				"gc",
-				"Enter the new Bedwars Tournament via our Discord! 19+ rank upgrades to be won! Weekly prizes!",
-			);
+			if(doAnnouncement == true){
+				bot.sendGuildMessage(
+					"gc",
+					`${announcement}`,
+				);
+			}
 		}, 60_000 * 15);
+	
 		
 		setTimeout(async () => {
 			bot.executeCommand("/g online");

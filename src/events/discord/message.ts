@@ -38,7 +38,7 @@ export default {
 				`${emojis.warning} <@${message.author.id}> tried to say "${message.content}" but was blocked as it matched bad words list. This message was not sent to Hypixel.`,
 			);
 		} else {
-			message.content = `${message.member.displayName} ${bot.chatSeparator} ${escapeMarkdown(
+			message.content = `${message.member.displayName}${bot.chatSeparator} ${escapeMarkdown(
 				message.content.replace(/\r?\n|\r/g, " "),
 			)}`;
 

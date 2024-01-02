@@ -1,6 +1,5 @@
 
 import { CommandInteraction } from 'discord.js';
-import fetch from 'node-fetch';
 import { Command } from '../interfaces/Command';
 import isFetchError from '../util/requests/isFetchError';
 import fetchHypixelGuild from '../util/requests/fetchHypixelGuild';

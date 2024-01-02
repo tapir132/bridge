@@ -15,7 +15,7 @@ export default {
 		}, 60_000 * 5);
 
 		setInterval(() => {
-			if(doAnnouncement == true){
+			if(doAnnouncement != "false"){
 				bot.sendGuildMessage(
 					"gc",
 					`${announcement}`,

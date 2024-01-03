@@ -50,7 +50,7 @@ export default {
 				? message.member.displayName.split(" ")[0]
 				: message.member.displayName;
 
-			message.content = `${name} ${bot.chatSeparator} ${message.content.replace(/\r?\n|\r/g, " ")}`;
+			message.content = `${name}${bot.chatSeparator} ${message.content.replace(/\r?\n|\r/g, " ")}`;
 			bot.sendGuildMessage(message.channel.id === bot.memberChannel?.id ? "gc" : "oc", message.content);
 		}
 	},

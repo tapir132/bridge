@@ -1,9 +1,8 @@
 import { CommandInteraction } from 'discord.js';
-import fetch from 'node-fetch';
 import { Command } from '../interfaces/Command';
 import isFetchError from '../util/requests/isFetchError';
 import fetchHypixelGuild from '../util/requests/fetchHypixelGuild';
-import { ApplicationCommandOptionType, EmbedBuilder} from "discord.js";
+import {EmbedBuilder} from "discord.js";
 import fetchHypixelPlayerProfile from '../util/requests/fetchHypixelPlayerProfile';
 import fetchHypixelPlayerProfileUUID from '../util/requests/fetchHypixelPlayerProfileUUID';
 import * as fs from 'fs';
@@ -13,7 +12,7 @@ import * as path from 'path';
 export default {
   data: {
     name: 'inactiveusers',
-    description: 'Automatically find inactive users yipee!',
+    description: 'Automatically find inactive users!',
   },
   run: async (bot, interaction: CommandInteraction) => {
     const dnkl = path.join(__dirname, '../../dnkl.txt');
@@ -86,7 +85,20 @@ export default {
           }
           }
         }
+        
       }
+      actionSummary.sort((a, b) => {
+        const matchA = a.match(/\d+\.\d+/);
+        const matchB = b.match(/\d+\.\d+/);
+        
+        if (matchA && matchB) {
+            const daysA = parseFloat(matchA[0]);
+            const daysB = parseFloat(matchB[0]);
+            return daysB - daysA;
+        } else {
+            return -1;
+        }
+    });
 
       const embed = new EmbedBuilder()
         .setTitle('Summary')
@@ -100,6 +112,7 @@ export default {
     } catch (error) {
       console.error('An error occurred:', error);
       await interaction.followUp('An error occurred while processing the command.');
+      bot.executeCommand("/oc An error occurred when trying to check inactive users.")
     }
   },
   staffOnly: true,

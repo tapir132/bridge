@@ -1,6 +1,5 @@
 
 import { CommandInteraction } from 'discord.js';
-import fetch from 'node-fetch';
 import { Command } from '../interfaces/Command';
 import isFetchError from '../util/requests/isFetchError';
 import fetchHypixelGuild from '../util/requests/fetchHypixelGuild';
@@ -23,7 +22,7 @@ export default {
 
     const doDemotions = args[0];
 
-    const lowestRankRequirement: number = Number(process.env.LOWEST_RANK_REQUIREMENT!);
+
     const middleRankRequirement: number = Number(process.env.MIDDLE_RANK_REQUIREMENT!);
     const highestRankRequirement: number = Number(process.env.HIGHEST_RANK_REQUIREMENT!);
 

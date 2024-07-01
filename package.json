@@ -23,7 +23,7 @@
 	"dependencies": {
 		"consola": "^2.15.3",
 		"copyfiles": "^2.4.1",
-		"discord.js": "14.10.2",
+		"discord.js": "14.15.3",
 		"dotenv": "^16.0.3",
 		"mineflayer": "^4.17.0",
 		"node-fetch": "^3.3.2",

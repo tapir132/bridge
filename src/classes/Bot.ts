@@ -34,7 +34,7 @@ class Bot {
 		password: process.env.MINECRAFT_PASSWORD,
 		host: "mc.hypixel.net",
 		auth: "microsoft",
-		version: "1.16.4",
+		version: "1.20.6",
 		logErrors: true,
 		hideErrors: true,
 		checkTimeoutInterval: 30000,

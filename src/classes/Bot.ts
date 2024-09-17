@@ -100,7 +100,7 @@ class Bot {
 	}
 
 	public sendToLimbo() {
-		this.executeCommand("§");
+		this.executeCommand("/limbo");
 	}
 
 	public setStatus() {
